@@ -7,7 +7,7 @@ console.log('>> Ready :)');
 //Variables
 const inputSearch = document.querySelector('.js-input-search');
 const btnSearch = document.querySelector('.js-btn-search');
-const CocktailsList = document.querySelector('.js-list-cocktails');
+const CocktailsList = document.querySelector('.js-ul-cocktails');
 let cocktails = [];
 
 
@@ -24,6 +24,7 @@ function renderCocktailList() {
         //Creamos los nodos
         const CocktailName = document.createTextNode(cocktail.name);
         //Creamos los atributos
+        liCocktail.setAttribute('class', 'js-li-cocktail');
         imgCocktail.setAttribute('src', cocktail.image);
         //Asignamos los padres a los elementos creados
         h2Cocktail.appendChild(CocktailName);
@@ -32,6 +33,7 @@ function renderCocktailList() {
         liCocktail.appendChild(articleCocktail);
         CocktailsList.appendChild(liCocktail);
     }
+    addEventToList();
 }
 
 
@@ -47,7 +49,8 @@ fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`)
 });
 
 //Función manejadora del evento del boton de buscar
-function handleClickSearch() {
+function handleClickSearch(ev) {
+    ev.preventDefault();
     const inputSearchValue = inputSearch.value;
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inputSearchValue}`)
         .then((response) => response.json())
@@ -61,6 +64,20 @@ function handleClickSearch() {
         });
 }
 
+//Función manejadora del evento de los li de la lista
+function handleClick(ev) {
+    console.log('he hecho click');
+    ev.currentTarget.classList.toggle('selected');
+}
+function addEventToList() {
+    const liElements = document.querySelectorAll('.js-li-cocktail');
+    for (const li of liElements) {
+        li.addEventListener('click', handleClick);
+    }
+}
 
 //Evento para el boton de bsucar
 btnSearch.addEventListener('click', handleClickSearch);
+
+
+
