@@ -32,6 +32,10 @@ function renderFavoriteList() {
 }
 //Pintar un elemento de la lista
 function renderCocktail(cocktail) {
+    //poner imagen por defecto cuando el coctel no tenga datos en image
+    if (cocktail.image === "") {
+        cocktail.image = "./assets/images/drink.jpg";
+    }
     let html = `<li class="js-li-cocktail" id=${cocktail.id} >
         <article >
         <h2>${cocktail.name}</h3>
@@ -80,12 +84,13 @@ function handleClickSearch(ev) {
         .then((data) => {
             cocktails = data.drinks.map((drinks) => ({
                 name: drinks.strDrink,
-                image: drinks.strDrinkThumb,
+                image:  drinks.strDrinkThumb,
                 id: drinks.idDrink,
             }));
         console.log(cocktails);
         renderCocktailList();
         });
+        
     } 
 }
 
