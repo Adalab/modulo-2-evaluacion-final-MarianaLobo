@@ -40,10 +40,19 @@ function renderCocktail(cocktail) {
         </li> `;
     return html;
 }
+//Pintar los elementos guardados en localStorage
+renderSaveFavorites();
+function renderSaveFavorites() {
+   const saveCocktails = JSON.parse(localStorage.getItem('favCocktails'));
+    for (const cocktail of saveCocktails) {
+        cocktailsListFav.innerHTML += renderCocktail(cocktail);
+    }
+}
+
 
 //FUNCIONES GENERALES
 
-//Función para que aparezcan cocteles margarita al cargar la página
+//Función para que aparezcan cocteles margarita al cargar la página, petición al servidor
 getCocktails();
 function getCocktails() {
     fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita`)
@@ -59,7 +68,7 @@ function getCocktails() {
 }
 
 
-//Función manejadora del evento del boton de buscar
+//Función manejadora del evento del boton de buscar, petición al servidor
 function handleClickSearch(ev) {
     ev.preventDefault();
     const inputSearchValue = inputSearch.value;
@@ -96,7 +105,8 @@ function handleClick(ev) {
         favoritesCocktails.splice(indexCocktail, 1);
 
     }
-    console.log(favoritesCocktails);
+    //Guardar los favoritos en localStorage
+    localStorage.setItem("favCocktails", JSON.stringify(favoritesCocktails));
     renderFavoriteList();
 
 }
