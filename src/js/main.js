@@ -13,6 +13,7 @@ let cocktails = [];
 let favoritesCocktails = [];
 
 
+
 //FUNCIONES PARA PINTAR
 
 //Pintar la lista de cocteles
@@ -25,10 +26,17 @@ function renderCocktailList() {
 }
 //Pintar la lista de favoritos
 function renderFavoriteList() {
-    cocktailsListFav.innerHTML = "";
+    let htmlFavorites = '';
     for (const cocktail of favoritesCocktails) {
-        cocktailsListFav.innerHTML += renderCocktail(cocktail);
+    htmlFavorites += `<li class="js-li-favorite" id=${cocktail.id} >
+            <article >
+            <h2>${cocktail.name}</h3>
+            <img src=${cocktail.image}>
+            </article> 
+            </li> `;
     }
+    cocktailsListFav.innerHTML = htmlFavorites;
+    addEventToFavList();
 }
 //Pintar un elemento de la lista
 function renderCocktail(cocktail) {
@@ -90,7 +98,7 @@ function handleClickSearch(ev) {
         console.log(cocktails);
         renderCocktailList();
         });
-        
+
     } 
 }
 
@@ -106,17 +114,35 @@ function handleClick(ev) {
     //compruebo si ya está en favoritos, si no está nos devuelve -1
     if (indexCocktail === -1) {
         favoritesCocktails.push(cocktailSelected);
+
     } else {
         favoritesCocktails.splice(indexCocktail, 1);
 
     }
-    //Guardar los favoritos en localStorage
-    localStorage.setItem("favCocktails", JSON.stringify(favoritesCocktails));
+    SaveLocalStroage();
     renderFavoriteList();
-
 }
 
+//Guardar los favoritos en localStorage
+function SaveLocalStroage() {
+    localStorage.setItem("favCocktails", JSON.stringify(favoritesCocktails));
+}
+
+// función para quitar un elemento de la lista de favortios
+function handleClickFav(ev) {
+    const idSelectedFav = ev.currentTarget.id;
+    const indexFav = favoritesCocktails.findIndex(cocktail => cocktail.id === idSelectedFav);
+     if(indexFav !== -1) {
+        favoritesCocktails.splice(indexFav, 1);
+     }
+     renderFavoriteList();
+     SaveLocalStroage();
+ }
+
 // EVENTOS
+
+//Evento para el boton de bsucar
+btnSearch.addEventListener('click', handleClickSearch);
 
 //Funcion para escuchar los eventos en cada li de la lista
 function addEventToList() {
@@ -126,8 +152,11 @@ function addEventToList() {
     }
 }
 
-//Evento para el boton de bsucar
-btnSearch.addEventListener('click', handleClickSearch);
-
-
+//Funcion para escuchar los eventos en cada li de la lista de favoritos
+function addEventToFavList() {
+    const liElements = document.querySelectorAll('.js-li-favorite');
+    for (const li of liElements) {
+        li.addEventListener('click', handleClickFav);
+    }
+}
 
