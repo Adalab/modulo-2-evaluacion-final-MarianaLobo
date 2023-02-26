@@ -9,6 +9,7 @@ const inputSearch = document.querySelector('.js-input-search');
 const btnSearch = document.querySelector('.js-btn-search');
 const CocktailsList = document.querySelector('.js-ul-cocktails');
 const cocktailsListFav = document.querySelector('.js-list-favorites');
+const btnRemove = document.querySelector('.js-btn-remove');
 let cocktails = [];
 let favoritesCocktails = [];
 
@@ -28,10 +29,10 @@ function renderCocktailList() {
 function renderFavoriteList() {
     let htmlFavorites = '';
     for (const cocktail of favoritesCocktails) {
-    htmlFavorites += `<li class="js-li-favorite" id=${cocktail.id} >
-            <article >
-            <h2>${cocktail.name}</h3>
-            <img src=${cocktail.image}>
+    htmlFavorites += `<li class=" js-li-favorite" id=${cocktail.id} >
+            <article class= "card">
+            <h2 class="h2Title">${cocktail.name}</h3>
+            <img class="image" src=${cocktail.image}>
             </article> 
             </li> `;
     }
@@ -44,10 +45,10 @@ function renderCocktail(cocktail) {
     if (cocktail.image === "") {
         cocktail.image = "./assets/images/drink.jpg";
     }
-    let html = `<li class="js-li-cocktail" id=${cocktail.id} >
-        <article >
-        <h2>${cocktail.name}</h3>
-        <img src=${cocktail.image}>
+    let html = `<li class="  js-li-cocktail" id=${cocktail.id} >
+        <article class= "card" >
+        <h2 class="h2Title">${cocktail.name}</h3>
+        <img class="image" src=${cocktail.image}>
         </article> 
         </li> `;
     return html;
@@ -55,9 +56,10 @@ function renderCocktail(cocktail) {
 //Pintar los elementos guardados en localStorage
 renderSaveFavorites();
 function renderSaveFavorites() {
-   const saveCocktails = JSON.parse(localStorage.getItem('favCocktails'));
-    for (const cocktail of saveCocktails) {
-        cocktailsListFav.innerHTML += renderCocktail(cocktail);
+    const saveCocktails = localStorage.getItem('favCocktails');
+    if (saveCocktails !== null) {
+        favoritesCocktails = JSON.parse(saveCocktails);
+        renderFavoriteList();
     }
 }
 
@@ -104,7 +106,6 @@ function handleClickSearch(ev) {
 
 //Función manejadora del evento de los li de la lista para que se seleccionen y se añadan a la lista de favoritos
 function handleClick(ev) {
-    console.log('he hecho click');
     ev.currentTarget.classList.toggle('selected');
     //busco por id en la lista de cocteles los que están seleccionados y los guardo en una variable
     const idSelected = ev.currentTarget.id;
@@ -125,7 +126,7 @@ function handleClick(ev) {
 
 //Guardar los favoritos en localStorage
 function SaveLocalStroage() {
-    localStorage.setItem("favCocktails", JSON.stringify(favoritesCocktails));
+    localStorage.setItem('favCocktails', JSON.stringify(favoritesCocktails));
 }
 
 // función para quitar un elemento de la lista de favortios
@@ -138,7 +139,14 @@ function handleClickFav(ev) {
      renderFavoriteList();
      SaveLocalStroage();
  }
+ //funcion para borrar todos los favoritos
+function handleRemove(ev) {
+    ev.preventDefault();
+    favoritesCocktails = [];
+    localStorage.removeItem('favCocktails');
+    renderFavoriteList();
 
+ }
 // EVENTOS
 
 //Evento para el boton de bsucar
@@ -160,3 +168,5 @@ function addEventToFavList() {
     }
 }
 
+//Evento del bonton de borrar los favoritos
+btnRemove.addEventListener('click', handleRemove);

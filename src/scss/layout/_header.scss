@@ -1,2 +1,30 @@
 .header {
+    margin-top: 200px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    
+    
 }
+
+.h1-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 3rem;
+
+}
+
+.input {
+    width: 200px;
+    height: 30px;
+    border-radius: 7px;
+}
+
+.button {
+    width: 100px;
+    height: 35px;
+    border-radius: 7px;
+}
+

@@ -6,6 +6,81 @@
 @import 'layout/footer';
 @import 'pages/index';
 
-.selected {
+ .main {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    gap: 10px;
+    
+    
+    
+ }
+.js-li-cocktail.selected {
     background-color: aqua;
+}
+
+.cocktails-list {
+    @media all and(min-width:768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+} 
+
+.card{
+    width: 100px;
+    height: 150px;
+    background-color: plum;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2px;
+    border-radius: 8px;
+    @media all and(min-width:768px) {
+    width: 200px;
+    height: 300px;
+    
+    }
+    
+}
+
+.image {
+    width: 90px;
+    height: 100px;
+    border-radius: 10px;
+    border: 3px solid lightgreen;
+    @media all and (min-width:768px) {
+        width: 160px;
+        height: 160px;
+        
+    }
+   
+}
+.favorite-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 7px;
+}
+.cocktails-Favlist {
+    width: 40vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.title-favs {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 2rem;
+    
+}
+.h2Title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    
 }
