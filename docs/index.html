@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Cocktail finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Icons
+    
+    -->
+  <link rel="stylesheet" href="./assets/css/main.css" />
+  <link rel="icon" href="./assets/images/favicon.png" />
+</head>
+
+<body class="background">
+  <header class="header">
+   
+    <form action="">
+      <h1 class="h1-title">Buscador de Cócteles</h1>
+      <input type="text" class="js-input-search input" name="search" id="" placeholder="Buscar" value="">
+      <input type="button" class="js-btn-search button"value="Buscar">
+  </form>
+
+  </header>
+
+  <main class="main">
+      <div class="favorite-box">
+          <h2 class="title-favs">&#x2764;&#xFE0F; Favoritos</h2>
+          <button class="js-btn-remove btn-remove">Remove</button>
+        </div>
+        <div class="list-container">
+      <section class="section-1">
+          <ul class="js-ul-cocktails cocktails-list"></ul>
+      </section>
+      
+      <section class="section-2" >
+          <ul class="js-list-favorites cocktails-Favlist"></ul>
+      </section>
+  </div> 
+  <hr class="hr">
+  </main>
+  <footer class="footer">
+  <small>Created by Mariana Lobo</small>
+  </footer>
+  <script src="./assets/js/main.js"></script>
+</body>
+
+</html>
