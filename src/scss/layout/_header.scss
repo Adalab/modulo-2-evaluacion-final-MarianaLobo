@@ -1,29 +1,60 @@
 .header {
-    margin-top: 200px;
-    margin-bottom: 50px;
+    height: 30vh;
+    padding-bottom: 50px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    gap: 10px;
+    align-items: flex-end;
+    background-image: url(../images/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 60%;
+    
+
     
 }
 
 .h1-title {
     font-family: 'Roboto', sans-serif;
-    font-size: 3rem;
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    @media all and (min-width:768px) {
+        font-size: 5rem;
+        
+    }
 
 }
 
 .input {
     width: 200px;
-    height: 30px;
+    height: 20px;
     border-radius: 7px;
+    border: none;
+    @media all and (min-width:768px) {
+        width: 350px;
+        height: 33px;
+        
+    }
 }
 
 .button {
-    width: 100px;
-    height: 35px;
-    border-radius: 7px;
+    width: 70px;
+    height: 20px;
+    margin-left: 20px;
+    color: white;
+    background-color: #7ead70;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px 2px rgb(88, 88, 88);
+    @media all and (min-width:768px) {
+        width: 100px;
+        height: 35px;
+        
+    }
 }
 

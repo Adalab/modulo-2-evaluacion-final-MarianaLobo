@@ -1,0 +1,143 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 10px;
+}
+.list-container {
+display: flex;
+flex-direction: row-reverse;
+justify-content: space-around;
+gap: 70px;
+@media all and(min-width:768px) {   
+justify-content: space-between;
+gap: 20px;
+}
+}
+.section-1 {
+
+    margin-right: 10%;
+}
+    
+
+.card.selected {
+    background-color:#eaf3c8;
+    border:#7ead70 3px solid;
+    color: #7ead70;
+}
+
+.cocktails-list {
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    @media all and(min-width:768px) {
+    
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    
+}
+} 
+
+.card{
+    width: 100px;
+    height: 150px;
+    background-color:#7ead70;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 2px;
+    padding: 3px 10px;
+    border: #eaf3c8 3px solid;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    @media all and(min-width: 768px) {
+    width: 200px;
+    height: 300px;
+    
+    }
+    
+}
+
+.image {
+    width: 90px;
+    height: 100px;
+    border-radius: 10px;
+    border: 3px solid white;
+    @media all and (min-width:768px) {
+        width: 160px;
+        height: 160px;
+        
+    }
+   
+}
+.favorite-box {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top: 20px;
+    gap: 10px;
+    @media all and (min-width:768px) {
+    margin-left: 5%;
+  
+}   
+}
+
+.btn-remove{
+    width: 50px;
+    height: 20px;
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif ;
+    color: white;
+    background-color: #7ead70;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 0 3px 2px rgb(88, 88, 88);
+    @media all and (min-width:768px) {
+        width: 100px;
+        height: 20px;
+      
+    }   
+}
+.section-2 {
+    width: 23%;
+    border: 3px soli #5d654e;
+    margin-left: 5%;
+}
+
+.cocktails-Favlist {
+    margin: 15px;
+    @media all and(min-width:768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+}
+.title-favs {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem ;
+    @media all and (min-width:768px) {
+        font-size: 2rem;
+    }
+}
+.h2Title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-align: center;
+    color: white;
+    
+}
+.hr {
+    height:2px;
+    width: 80vw;
+    border-width:0;
+    background-color:rgb(247, 209, 184);
+    
+}

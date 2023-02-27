@@ -53,8 +53,8 @@ function renderCocktail(cocktail) {
     } else {
         classSelected = '';
     }
-      let html = `<li class="js-li-cocktail ${classSelected}" id=${cocktail.id} >
-        <article class= "card" >
+      let html = `<li class="js-li-cocktail" id=${cocktail.id} >
+        <article class= "card  ${classSelected}" >
         <h2 class="h2Title">${cocktail.name}</h3>
         <img class="image" src=${cocktail.image}>
         </article> 
