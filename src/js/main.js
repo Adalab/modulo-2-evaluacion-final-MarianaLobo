@@ -45,14 +45,25 @@ function renderCocktail(cocktail) {
     if (cocktail.image === "") {
         cocktail.image = "./assets/images/drink.jpg";
     }
-    let html = `<li class="  js-li-cocktail" id=${cocktail.id} >
+        let classSelected = '';
+        const favoriteFound = favoritesCocktails.find(cocktailFav => cocktail.id === cocktailFav.id );
+        console.log(favoriteFound);
+    if (favoriteFound !== undefined) {
+        classSelected = 'selected';
+    } else {
+        classSelected = '';
+    }
+      let html = `<li class="js-li-cocktail ${classSelected}" id=${cocktail.id} >
         <article class= "card" >
         <h2 class="h2Title">${cocktail.name}</h3>
         <img class="image" src=${cocktail.image}>
         </article> 
         </li> `;
     return html;
-}
+
+    } 
+
+
 //Pintar los elementos guardados en localStorage
 renderSaveFavorites();
 function renderSaveFavorites() {
@@ -81,7 +92,6 @@ function getCocktails() {
 });
 }
 
-
 //Función manejadora del evento del boton de buscar, petición al servidor
 function handleClickSearch(ev) {
     ev.preventDefault();
@@ -100,13 +110,12 @@ function handleClickSearch(ev) {
         console.log(cocktails);
         renderCocktailList();
         });
-
-    } 
+    }
 }
 
 //Función manejadora del evento de los li de la lista para que se seleccionen y se añadan a la lista de favoritos
 function handleClick(ev) {
-    ev.currentTarget.classList.toggle('selected');
+
     //busco por id en la lista de cocteles los que están seleccionados y los guardo en una variable
     const idSelected = ev.currentTarget.id;
     const cocktailSelected = cocktails.find(cocktail => cocktail.id === idSelected);
@@ -118,10 +127,10 @@ function handleClick(ev) {
 
     } else {
         favoritesCocktails.splice(indexCocktail, 1);
-
     }
     SaveLocalStroage();
     renderFavoriteList();
+    renderCocktailList();
 }
 
 //Guardar los favoritos en localStorage
@@ -137,7 +146,8 @@ function handleClickFav(ev) {
         favoritesCocktails.splice(indexFav, 1);
      }
      renderFavoriteList();
-     SaveLocalStroage();
+    SaveLocalStroage();
+    renderCocktailList();
  }
  //funcion para borrar todos los favoritos
 function handleRemove(ev) {
@@ -145,8 +155,11 @@ function handleRemove(ev) {
     favoritesCocktails = [];
     localStorage.removeItem('favCocktails');
     renderFavoriteList();
+    renderCocktailList();
 
- }
+}
+
+
 // EVENTOS
 
 //Evento para el boton de bsucar
